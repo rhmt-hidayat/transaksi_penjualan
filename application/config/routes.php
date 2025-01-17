@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 
 $route = array(
-	'default_controller' => 'transaksi_penjualan'
+	'default_controller' => 'c_master_barang'
 );
 $route['404'] = 'page/notfound';
 $route['500'] = 'page/noterror';
