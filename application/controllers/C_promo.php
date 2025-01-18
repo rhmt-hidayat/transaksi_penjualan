@@ -11,7 +11,7 @@ class C_promo extends CI_Controller
 
 	function index()
 	{
-		$data['judul'] = "Promo Penjualan";
+		$data['judul'] = "Promo";
 		$data['data'] = $this->M_transaksi->PromoCode();
 		$data['barang'] = $this->M_transaksi->loadBarang();
 		$data['promo'] = $this->M_transaksi->loadPromo();
@@ -149,23 +149,5 @@ class C_promo extends CI_Controller
 			$this->session->set_flashdata('error', 'Gagal Menghapus Data');
 			redirect('c_promo', 'refresh');
 		}
-	}
-
-	public function cetak_invoice($id)
-	{
-		$this->load->view('V_invoice/index');
-	}
-
-	public function print_pdf($id)
-	{
-		$data['promo'] = $this->M_transaksi->cekPromobyID('promo', $id);
-		$data['barang'] = $this->M_transaksi->loadBarang();
-
-		$this->load->library('pdf');
-		$tgl = date('Y-m-d');
-
-		$this->pdf->setPaper('A4', 'landscape');
-		$this->pdf->filename = "Invoice - $tgl.pdf";
-		$this->pdf->load_view('V_invoice/index', $data);
 	}
 }

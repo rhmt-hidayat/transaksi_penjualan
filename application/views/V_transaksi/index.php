@@ -1,13 +1,13 @@
 </div>
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>Promo</h2>
+		<h2>Data Penjualan</h2>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="index.html">Master Data</a>
+				<a href="index.html">Transaksi</a>
 			</li>
 			<li class="breadcrumb-item active">
-				<strong>Promo</strong>
+				<strong>Penjualan</strong>
 			</li>
 		</ol>
 	</div>
@@ -23,8 +23,8 @@
 		<div class="col-lg-12">
 			<div class="ibox ">
 				<div class="ibox-title">
-					<h5>Promo</h5>
-					<button type="button" data-toggle="modal" data-target="#tambahData" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Promo</button>
+					<h5>Data Penjualan</h5>
+					<a href="<?php echo base_url() . 'c_transaksi/cart'; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Transaksi</a>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -50,32 +50,38 @@
 							<thead>
 								<tr>
 									<th>No.</th>
+									<th>Nama Barang</th>
 									<th>Kode Promo</th>
-									<th>Nama Promo</th>
 									<th>Keterangan</th>
+									<th>Harga</th>
+									<th>Jumlah</th>
+									<th>Total</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$no = 1;
-								foreach ($promo as $row) {
+								foreach ($DataTransaksi as $row) {
 								?>
 									<tr class="gradeX">
 										<td><?php echo $no++; ?></td>
+										<td><?php echo $row->nama_barang; ?></td>
 										<td><?php echo $row->kode_promo; ?></td>
-										<td><?php echo $row->nama_promo; ?></td>
 										<td class="center"><?php echo $row->keterangan; ?></td>
+										<td><?php echo $row->harga; ?></td>
+										<td><?php echo $row->jumlah; ?></td>
+										<td><?php echo $row->total; ?></td>
 										<td class="center">
 											<div class="btn-group">
-												<a href="<?php echo base_url() . 'c_promo/edit/' . $row->id; ?>" class="btn btn-xs btn-success" title="Edit"><i class="fa fa-edit"></i> Edit</a>
-												<a href="#" data-toggle="modal" data-target="#hapusData<?php echo $row->id; ?>" data-id="" class="btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i> Delete</a>
+												<a target="_blank" href="<?= base_url(); ?>c_transaksi/cetak_invoice/<?= $row->id; ?>" style="font-size:10px;" class="btn btn-primary" onclick=""><i class="fa fa-print" data-toggle="tooltip" title="Print" aria-hidden="true"></i> Cetak Invoice</a>
+												<a href="<?= base_url(); ?>c_transaksi/print_pdf/<?= $row->id; ?>" style="font-size:10px;" class="btn btn-warning" onclick=""><i class="fa fa-download" data-toggle="tooltip" title="Download" aria-hidden="true"></i> Download PDF</a>
 											</div>
 										</td>
 									</tr>
-								<?php
+								<!-- <?php
 								}
-								?>
+								?> -->
 							</tbody>
 							<!-- <tfoot>
 								<tr>
@@ -93,6 +99,3 @@
 		</div>
 	</div>
 </div>
-<?php
-$this->load->view('V_promo/modal');
-?>

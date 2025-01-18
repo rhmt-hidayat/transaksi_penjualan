@@ -4,7 +4,7 @@
 		<h2>Master Barang</h2>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="index.html">Transaksi</a>
+				<a href="index.html">Master Data</a>
 			</li>
 			<li class="breadcrumb-item active">
 				<strong>Master Barang</strong>
@@ -24,7 +24,7 @@
 			<div class="ibox ">
 				<div class="ibox-title">
 					<h5>Master Barang</h5>
-					<a data-toggle="modal" data-target="#tambah-data" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+					<button type="button" data-toggle="modal" data-target="#tambah-data" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</button>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>

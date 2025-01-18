@@ -29,6 +29,19 @@
             return $this->db->get($table)->result();
         }
 
+		Function DataTransaksi()
+        {
+            // $this->db->select('master_barang.*, promo.kode_promo as kodePromo, promo.keterangan as keterangan');
+            // $this->db->from('master_barang');
+            // $this->db->join('promo', 'master_barang.nama_barang = promo.nama_promo', 'LEFT');
+            // $this->db->order_by('master_barang.kode_barang', 'ASC');
+			$this->db->select('*');
+            $this->db->from('transaksi');
+            $this->db->order_by('kode_transaksi', 'ASC');
+            
+            return $this->db->get()->result();
+        }
+
 		function loadBarang()
         {
             $this->db->select('*');
@@ -61,6 +74,23 @@
 				}
 			$batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
 			$kodetampil = "PROMO-".$batas;
+			return $kodetampil;  
+		}
+
+		public function TransaksiCode(){
+			$this->db->select('RIGHT(transaksi.kode_transaksi,3) as kode_transaksi', FALSE);
+			$this->db->order_by('kode_transaksi','DESC');    
+			$this->db->limit(1);    
+			$query = $this->db->get('transaksi');
+				if($query->num_rows() <> 0){      
+					 $data = $query->row();
+					 $kode = intval($data->kode_transaksi) + 1; 
+				}
+				else{      
+					 $kode = 1;  
+				}
+			$batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
+			$kodetampil = "TR-".$batas;
 			return $kodetampil;  
 		}
 

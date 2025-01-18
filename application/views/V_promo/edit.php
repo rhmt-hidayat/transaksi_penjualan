@@ -14,7 +14,6 @@
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group row"><label class="col-sm-2 col-form-label">Nama Promo</label>
-						<!-- <input type="text" class="form-control" name="nama_promo" value="<?php echo $edit['nama_promo'] ?>"> -->
 							<div class="col-sm-10">
 								<select name="nama_promo" class="form-control select2bs4" style="width: 100%;">
 									<option value="">Pilih Nama Promo</option>

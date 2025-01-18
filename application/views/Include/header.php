@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title><?php echo $judul; ?></title>
-	<link rel="shortcut icon" href="<?php echo base_url().'assets/img/mini-bg.png'; ?>">
+	<link rel="shortcut icon" href="<?php echo base_url().'assets/img/icon.ico'; ?>">
     <link href="<?php echo base_url().'assets/css/bootstrap.min.css'; ?>" rel="stylesheet">
     <link href="<?php echo base_url().'assets/font-awesome/css/font-awesome.css'; ?>" rel="stylesheet">
 

@@ -51,7 +51,7 @@
 				<nav class="mb-2" aria-label="breadcrumb">
 					<ol class="breadcrumb mb-0">
 						<li class="breadcrumb-item"><a href="#!">Cetak Invoice</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Kode Promo FLR978282</li>
+						<li class="breadcrumb-item active" aria-current="page">Kode Transaksi <?php echo $edit['kode_transaksi'] ?></li>
 					</ol>
 				</nav>
 				<div class="d-flex justify-content-between align-items-end mb-4">
@@ -70,7 +70,7 @@
 											<h6 class="mb-0 me-3">Invoice No :</h6>
 										</div>
 										<div class="col-auto col-lg-6 col-xl-7">
-											<p class="fs--1 text-800 fw-semi-bold mb-0">#FLR978282</p>
+											<p class="fs--1 text-800 fw-semi-bold mb-0"><?php echo $edit['kode_transaksi'] ?></p>
 										</div>
 									</div>
 								</div>
@@ -80,7 +80,7 @@
 											<h6 class="me-3">Invoice Date :</h6>
 										</div>
 										<div class="col-auto col-lg-6 col-xl-7">
-											<p class="fs--1 text-800 fw-semi-bold mb-0">18.01.2025</p>
+											<p class="fs--1 text-800 fw-semi-bold mb-0"><?php echo $tgl ?></p>
 										</div>
 									</div>
 								</div>
@@ -120,57 +120,83 @@
 									<th scope="col" style="min-width: 60px;">No.</th>
 									<th scope="col" style="min-width: 360px;">Nama Barang</th>
 									<th class="ps-5" scope="col" style="min-width: 150px;">Kode Promo</th>
-									<th scope="col" style="width: 60px;">Varian</th>
 									<th class="text-end" scope="col" style="width: 80px;">Jumlah</th>
 									<th class="text-end" scope="col" style="width: 100px;">Harga</th>
-									<th class="text-end" scope="col" style="width: 138px;">#</th>
-									<th class="text-center" scope="col" style="width: 80px;">#</th>
-									<th class="text-end" scope="col" style="min-width: 92px;">#</th>
 									<th class="text-end" scope="col" style="min-width: 60px;">Total</th>
 									<th scope="col" style="width: 24px;"></th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php
+								$no = 1;
+								function penyebut($nilai)
+								{
+									$nilai = abs($nilai);
+									$huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+									$temp = "";
+									if ($nilai < 12) {
+										$temp = " " . $huruf[$nilai];
+									} else if ($nilai < 20) {
+										$temp = penyebut($nilai - 10) . " belas";
+									} else if ($nilai < 100) {
+										$temp = penyebut($nilai / 10) . " puluh" . penyebut($nilai % 10);
+									} else if ($nilai < 200) {
+										$temp = " seratus" . penyebut($nilai - 100);
+									} else if ($nilai < 1000) {
+										$temp = penyebut($nilai / 100) . " ratus" . penyebut($nilai % 100);
+									} else if ($nilai < 2000) {
+										$temp = " seribu" . penyebut($nilai - 1000);
+									} else if ($nilai < 1000000) {
+										$temp = penyebut($nilai / 1000) . " ribu" . penyebut($nilai % 1000);
+									} else if ($nilai < 1000000000) {
+										$temp = penyebut($nilai / 1000000) . " juta" . penyebut($nilai % 1000000);
+									} else if ($nilai < 1000000000000) {
+										$temp = penyebut($nilai / 1000000000) . " milyar" . penyebut(fmod($nilai, 1000000000));
+									} else if ($nilai < 1000000000000000) {
+										$temp = penyebut($nilai / 1000000000000) . " trilyun" . penyebut(fmod($nilai, 1000000000000));
+									}
+									return $temp;
+								}
+
+								function terbilang($nilai)
+								{
+									if ($nilai < 0) {
+										$hasil = "minus " . trim(penyebut($nilai));
+									} else {
+										$hasil = trim(penyebut($nilai));
+									}
+									return $hasil;
+								}
+								?>
 								<tr>
 									<td class="border-0"></td>
-									<td class="align-middle">1</td>
+									<td class="align-middle"><?php echo $no++; ?></td>
 									<td class="align-middle">
-										<p class="line-clamp-1 mb-0 fw-semi-bold">Body Care</p>
+										<p class="line-clamp-1 mb-0 fw-semi-bold"><?php echo $edit['nama_barang'] ?></p>
 									</td>
-									<td class="align-middle ps-5">Promo-001</td>
-									<td class="align-middle text-700 fw-semi-bold">-</td>
-									<td class="align-middle text-end text-1000 fw-semi-bold">2</td>
-									<td class="align-middle text-end fw-semi-bold">3000</td>
-									<td class="align-middle text-end">-</td>
-									<td class="align-middle text-center fw-semi-bold">-</td>
-									<td class="align-middle text-end fw-semi-bold">-</td>
-									<td class="align-middle text-end fw-semi-bold">6000</td>
+									<td class="align-middle ps-5"><?php echo $edit['kode_promo'] ?></td>
+									<td class="align-middle text-end text-1000 fw-semi-bold"><?php echo $edit['jumlah'] ?></td>
+									<td class="align-middle text-end fw-semi-bold"><?php echo $edit['harga'] ?></td>
+									<td class="align-middle text-end fw-semi-bold"><?php echo $edit['total'] ?></td>
 									<td class="border-0"></td>
 								</tr>
 								<tr class="bg-200">
 									<td></td>
-									<td class="align-middle fw-semi-bold" colspan="9">Subtotal</td>
+									<td class="align-middle fw-semi-bold" colspan="5">Subtotal</td>
 									<td class="align-middle text-end fw-bold">6000</td>
 									<td></td>
 								</tr>
 								<tr>
 									<td class="border-0"></td>
-									<td colspan="6"></td>
-									<td class="align-middle fw-bold ps-15" colspan="2">Shipping Cost</td>
-									<td class="align-middle text-end fw-semi-bold" colspan="2">10000</td>
+									<td colspan="3"></td>
+									<td class="align-middle fw-bold ps-15" colspan="2">Bayar</td>
+									<td class="align-middle text-end fw-semi-bold" colspan="1"><?php echo $edit['bayar'] ?></td>
 									<td class="border-0"></td>
 								</tr>
-								<tr>
-									<td></td>
-									<td colspan="6"></td>
-									<td class="align-middle fw-bold ps-15" colspan="2">Discount/Voucher</td>
-									<td class="align-middle text-end fw-semi-bold text-danger" colspan="2">0</td>
-									<td></td>
-								</tr>
 								<tr class="bg-200">
-									<td class="align-middle ps-4 fw-bold text-1000" colspan="3">Grand Total</td>
-									<td class="align-middle fw-bold text-1000" colspan="7">Empat Ribu Rupiah</td>
-									<td class="align-middle text-end fw-bold">4000</td>
+									<td class="align-middle ps-4 fw-bold text-1000" colspan="3">Kembalian</td>
+									<td class="align-middle fw-bold text-1000" colspan="3">Empat Ribu Rupiah</td>
+									<td class="align-middle text-end fw-bold"><?php echo ucwords(terbilang($edit['kembalian'])) . " Rupiah"; ?></td>
 									<td></td>
 								</tr>
 							</tbody>
@@ -199,16 +225,7 @@
 
 		// Print PDF.
 		printButton.addEventListener('click', () => {
-			// window.print();
-			const iframe = document.createElement('iframe');
-			iframe.style.position = 'fixed';
-			iframe.style.right = '100%';
-			iframe.style.bottom = '100%';
-			iframe.src = 'document.pdf';
-			iframe.onload = () => {
-				iframe.contentWindow.print();
-			};
-			document.body.appendChild(iframe);
+			window.print();
 		});
 	</script>
 

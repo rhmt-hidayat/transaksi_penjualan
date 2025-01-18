@@ -1,4 +1,4 @@
-<?php foreach($data as $row): $id=$row->id; ?>
+<?php foreach($data as $row): $id=$row->id; $nama_barang = $row->nama_barang; $kode_barang = $row->kode_barang; ?>
 <div class="modal fade" id="hapusData<?php echo $row->id; ?>" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="dialog">
         <div class="modal-content">
@@ -13,6 +13,7 @@
                     <p>Are you sure you want to delete this data?</p>
                     <div class="form-group">
                         <input type="hidden" name="id" class="form-control" value="<?php echo $id;?>">
+                        <input type="text" name="nama_barang" class="form-control" value="<?php echo $kode_barang.' - '.$nama_barang;?>" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">

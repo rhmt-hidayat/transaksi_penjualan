@@ -20,10 +20,16 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Transaksi</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Master Data</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 						<li class="active"><a href="<?php echo base_url() . 'c_master_barang'; ?>">Master Barang</a></li>
                         <li class="active"><a href="<?php echo base_url() . 'c_promo'; ?>">Promo</a></li>
+                    </ul>
+                </li> 
+                <li class="active">
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Transaksi</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+						<li class="active"><a href="<?php echo base_url() . 'c_transaksi'; ?>">Penjualan</a></li>
                     </ul>
                 </li> 
             </ul>
