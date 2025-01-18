@@ -43,7 +43,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-4 col-sm-offset-2">
-								<button class="btn btn-white btn-sm" type="submit">Cancel</button>
+								<a href="<?php echo base_url() . 'c_promo'; ?>" class="btn btn-white btn-sm">Cancel</a>
 								<button class="btn btn-primary btn-sm" type="submit">Save changes</button>
 							</div>
 						</div>

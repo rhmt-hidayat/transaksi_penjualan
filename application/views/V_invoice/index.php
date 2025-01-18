@@ -195,8 +195,8 @@
 								</tr>
 								<tr class="bg-200">
 									<td class="align-middle ps-4 fw-bold text-1000" colspan="3">Kembalian</td>
-									<td class="align-middle fw-bold text-1000" colspan="3">Empat Ribu Rupiah</td>
-									<td class="align-middle text-end fw-bold"><?php echo ucwords(terbilang($edit['kembalian'])) . " Rupiah"; ?></td>
+									<td class="align-middle fw-bold text-1000" colspan="3"><?php echo ucwords(terbilang($edit['kembalian'])) . " Rupiah"; ?></td>
+									<td class="align-middle text-end fw-bold"><?php echo $edit['kembalian'] ?></td>
 									<td></td>
 								</tr>
 							</tbody>
