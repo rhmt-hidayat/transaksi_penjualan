@@ -27,7 +27,7 @@ CREATE TABLE `master_barang` (
   `harga` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`,`kode_barang`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `master_barang` */
 
@@ -48,14 +48,38 @@ CREATE TABLE `promo` (
   `keterangan` varchar(150) NOT NULL,
   PRIMARY KEY (`id`,`kode_promo`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `promo` */
 
 insert  into `promo`(`id`,`kode_promo`,`nama_promo`,`keterangan`) values 
-(1,'PROMO-001','Promo Body Care','setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000'),
-(2,'PROMO-002','Promo Hair Care','setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000'),
-(3,'PROMO-003','Promo Skin Care','setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000');
+(8,'PROMO-001','Promo Skin Care','setiap pembelian Skin Care sejumlah 2 pcs akan mendapat potongan harga 5000'),
+(9,'PROMO-002','Promo Body Care','setiap pembelian Body Care sejumlah 2 pcs akan mendapat potongan harga 4000'),
+(10,'PROMO-003','Promo Facial Care','setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000'),
+(11,'PROMO-004','Promo Hair Care','setiap pembelian Hair Care sejumlah 2 pcs akan mendapat potongan harga 2000');
+
+/*Table structure for table `transaksi` */
+
+DROP TABLE IF EXISTS `transaksi`;
+
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_transaksi` varchar(20) NOT NULL,
+  `nama_barang` varchar(50) NOT NULL,
+  `kode_promo` varchar(20) NOT NULL,
+  `keterangan` varchar(150) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `bayar` int(11) NOT NULL,
+  `kembalian` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`kode_transaksi`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `transaksi` */
+
+insert  into `transaksi`(`id`,`kode_transaksi`,`nama_barang`,`kode_promo`,`keterangan`,`harga`,`jumlah`,`total`,`bayar`,`kembalian`) values 
+(1,'TR-001','Facial Care','Promo Facial Care','Setiap Pembelian Facial Care Sejumlah 2 Pcs Akan Mendapat Potongan Harga 3000',3000,4,6000,10000,4000);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
