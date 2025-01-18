@@ -88,7 +88,6 @@
 							</tfoot> -->
 						</table>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -130,7 +129,8 @@ $this->load->view('V_promo/modal');
 					<div class="form-group">
 						<label class="col-lg-4 col-sm-2 control-label">Keterangan</label>
 						<div class="col-lg-10">
-							<textarea type="text" class="form-control" name="keterangan" placeholder="Keterangan">setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000</textarea>
+							<!-- kasih kondisi jika pilih select muncul keterangan jika tidak no keterangan -->
+							<textarea type="text" class="form-control" name="keterangan" placeholder="Keterangan" required>setiap pembelian Facial Care sejumlah 2 pcs akan mendapat potongan harga 3000</textarea>
 						</div>
 					</div>
 				</div>

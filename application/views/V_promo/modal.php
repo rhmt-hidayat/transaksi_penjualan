@@ -1,4 +1,4 @@
-<?php foreach($data as $row): $id=$row->id; ?>
+<?php foreach($promo as $row): $id=$row->id; ?>
 <div class="modal fade" id="hapusData<?php echo $row->id; ?>" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="dialog">
         <div class="modal-content">

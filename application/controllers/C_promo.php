@@ -111,6 +111,7 @@
                 );
 				// var_dump($data);
                 $data['judul'] = "Edit promo";
+				$data['barang'] = $this->M_transaksi->loadBarang();
                 $this->load->view('Include/header', $data);
                 $this->load->view('Include/sidebar');
 				$this->load->view('Include/topbar');
@@ -155,19 +156,18 @@
 		function delete()
         {
             $id = $this->input->post('id');
-			echo $id;
-            // $where = array('id' => $id);
+            $where = array('id' => $id);
 
-            // $update = $this->M_transaksi->delete('promo', $where);
-            // if($update)
-            // {
-            //     $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
-            //     redirect('c_promo', 'refresh');
-            // }
-            // else
-            // {
-            //     $this->session->set_flashdata('error', 'Gagal Menghapus Data');
-            //     redirect('c_promo', 'refresh');
-            // }
+            $update = $this->M_transaksi->delete('promo', $where);
+            if($update)
+            {
+                $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
+                redirect('c_promo', 'refresh');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Gagal Menghapus Data');
+                redirect('c_promo', 'refresh');
+            }
         }
 	}

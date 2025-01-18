@@ -111,19 +111,19 @@
 					<div class="form-group">
 						<label class="col-lg-4 col-sm-2 control-label">Kode Barang</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" name="kode_barang" placeholder="001">
+							<input type="text" class="form-control" name="kode_barang" placeholder="001" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-4 col-sm-2 control-label">Nama Barang</label>
 						<div class="col-lg-10">
-							<textarea class="form-control" name="nama_barang" placeholder="Nama barang"></textarea>
+							<textarea class="form-control" name="nama_barang" placeholder="Nama barang" required></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-4 col-sm-2 control-label">Harga</label>
 						<div class="col-lg-10">
-							<input type="number" class="form-control" name="harga" placeholder="10000">
+							<input type="number" class="form-control" name="harga" placeholder="10000" required>
 						</div>
 					</div>
 				</div>
